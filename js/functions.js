@@ -1,4 +1,6 @@
-"use strict";
+(function () {
+    "use strict";
+
 
 /**
  * TODO:
@@ -121,3 +123,4 @@ var merch = prompt( "What is your merchandise total?");
 var sale = prompt ("What discount percent does the customer have?");
 var discountedTotal = merch - (merch * sale) ;
 console.log(applyDiscount(merch, sale));
+})();
