@@ -29,6 +29,7 @@ function analyzeColor(input){
     }
 }
 console.log(analyzeColor("cyan"))
+
 // Don't change the next two lines!
 // These lines create two variables for you:
 // - `colors`: a list of the colors of the rainbow
