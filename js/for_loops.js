@@ -8,10 +8,10 @@ function showMultiplicationTable(num) {
 showMultiplicationTable(7)
 
 //Exercise 3
-for(var count = 1; count <= 10; count++){
+for(var i = 0; i < 10; i++){
     var random = Math.floor(Math.random() * (200 - 20 + 1) ) + 20;
     if(random % 2 === 0){
-        console.log(random +" is even");
+        console.log(random + " is even");
     } else {
         console.log(random + " is odd.")
     }
