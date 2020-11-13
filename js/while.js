@@ -10,7 +10,7 @@ console.log("I have this many cones to sell: " + allCones);
 do{
   var conesPurchased =  Math.floor(Math.random()*5)+1;
   if(conesPurchased > allCones){
-      console.log("Can't sell you that many cones. You wanted " + conesPurchased + ", but I onlu have " + allCones)
+      console.log("Can't sell you that many cones. You wanted " + conesPurchased + ", but I only have " + allCones)
   } else {
       allCones = allCones - conesPurchased;
       console.log("Here are your " + conesPurchased + " cones! I have " + allCones + " left.")
