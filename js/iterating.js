@@ -18,9 +18,11 @@ console.log(names.length)
      * Create log statements that will print each of the names individually by
      * accessing each element's index.
      */
-for(var i = 0; i < names.length; i++){
-    console.log(names[i])
-}
+
+    console.log(names[0])
+    console.log(names[1])
+    console.log(names[2])
+    console.log(names[3])
     /**
      * TODO:
      * Write some code that uses a for loop to log every item in the names
@@ -49,23 +51,23 @@ names.forEach(function(name){
      *  > second([1, 2, 3, 4, 5]) // returns 2
      *  > last([1, 2, 3, 4, 5]) // return 5
      */
-function returnFirst(array){
+function first(array){
     for(var i =0; i < array.length; i++){
         return array[0]
     }
     }
-    function returnSecond(array){
+    function second(array){
         for(var i =0; i < array.length; i++){
             return array[1]
         }
     }
-    function returnThird(array){
+    function third(array){
         for(var i =0; i < array.length; i++){
             return array[array.length -1]
         }
     }
-    console.log(returnFirst([1, 2, 3, 4, 5]));
-    console.log(returnSecond([1, 2, 3, 4, 5]));
-    console.log(returnThird([1, 2, 3, 4, 5]));
+    console.log(first(names));
+    console.log(second(names));
+    console.log(third(names));
 
 })();
