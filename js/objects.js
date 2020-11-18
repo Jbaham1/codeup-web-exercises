@@ -28,7 +28,7 @@ var person = {
      * > console.log(person.sayHello()) // "Hello from Rick Sanchez!"
      */
 person.sayHello = function (){
-    return "Hello from " + person.firstName + " " + person.lastName + "!";
+    return "Hello from " + this.firstName + " " + this.lastName + "!";
 }
     console.log(person.sayHello());
 
@@ -54,11 +54,11 @@ person.sayHello = function (){
 
 
     shoppers.forEach(function(shopper){
-        console.log(shopper.name + "'s bill before discount is $" + shopper.amount);
+        console.log(shopper.name + "'s bill before discount is $" + shopper.amount.toFixed(2));
         if(shopper.amount > 200){
             console.log(shopper.name + "'s bill after discount is $" + (shopper.amount - (shopper.amount * .12)).toFixed(2));
         } else {
-            console.log( shopper.name +" does not receive a discount so their bill is still $" + shopper.amount) ;
+            console.log( shopper.name +" does not receive a discount so their bill is still $" + shopper.amount.toFixed(2)) ;
         }
     })
 
@@ -75,21 +75,45 @@ person.sayHello = function (){
      * > console.log(books[0].author.lastName) // "Adams"
      */
 var books = [
-        {title: "Cat in the Hat",
-        author:  {firstName: "Theodor", lastName: "Geisel"}},
+        {
+            title: "Cat in the Hat",
+            author:  {
+                firstName: "Theodor",
+                lastName: "Geisel"
+            }
+        },
 
-        {title: "Encyclopedia Brown",
-        author:  {firstName: "Donald", lastName: "Sobol"}},
+        {
+            title: "Encyclopedia Brown",
+            author:  {
+                firstName: "Donald",
+                lastName: "Sobol"
+            }
+        },
 
-        {title: "Amelia Badelia",
-        author:  {firstName: "Peggy", lastName: "Parish"}},
+        {
+            title: "Amelia Badelia",
+            author:  {
+                firstName: "Peggy",
+                lastName: "Parish"
+            }
+        },
 
-        {title: "A Series of Unfortunate Events",
-        author:  {firstName: "Daniel", lastName: "Handler",
-        firstName: "Brett", lastName: "Helquist"}},
+        {
+            title: "A Series of Unfortunate Events",
+            author:  {
+                firstName: "Daniel",
+                lastName: "Handler",
+            }
+        },
 
-        {title: "Junie B. Jones",
-        author:  {firstName: "Barbara", lastName: "Park"}},
+        {
+            title: "Junie B. Jones",
+            author:  {
+                firstName: "Barbara",
+                lastName: "Park"
+            }
+        },
     ];
     // console.log(books[0].title)
     // console.log(books[0].author.firstName)
@@ -120,7 +144,7 @@ var books = [
      */
     books.forEach(function(book, i){
         var bookIndex = i+1
-         console.log("Book # " +bookIndex+ "\n", "Title: " +book.title,"\n", "Author: " + book.author.firstName + " " + book.author.lastName)
+         console.log("Book # " +bookIndex+ "\n", "Title: " +book.title,"\n", "Author: " + book.author.firstName + " " + book.author.lastName )
 
     })
     /**
@@ -133,5 +157,14 @@ var books = [
      *   outputs the information described above. Refactor your loop to use your
      *   `showBookInfo` function.
      */
+function showBookInfo(book){
+    var str = "Title: " + book.title + "\n";
+    str += "Author: " + book.author.firstName +" "+ book.author.lastName;
+    return str;
+    }
 
+    books.forEach(function(book, i){
+        var bookIndex = i+1
+        console.log("Book #" + (i +1) + "\n" + showBookInfo(book));
+    })
 })();
