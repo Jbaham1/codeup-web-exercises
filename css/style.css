@@ -1,4 +1,54 @@
+
+
 .fancy-header {
     color: purple; /* single line comment */
+    text-align: center;
+}
+h1, h2{
     text-decoration: underline;
+}
+body{
+    background: antiquewhite;
+    font-family: 'Dancing Script', cursive;
+
+}
+ol{
+   list-style: upper-roman;
+    list-style-position: inside;
+
+}
+ul{
+    list-style: square;
+    list-style-position: inside;
+}
+td,tr{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 12px;
+    background-color: cornsilk;
+}
+
+a:link{
+    color: blue;
+}
+a:visited, a:hover{
+    color:deeppink;
+}
+a:active{
+    color: greenyellow;
+}
+
+img{
+    padding: 10px;
+    height: 140px;
+    width: 140px;
+    border: 15px;
+}
+
+sup {
+    font-size: 6px;
+    font-family: SansSerif;
+    font-weight: normal;
 }
