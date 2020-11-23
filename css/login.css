@@ -15,6 +15,7 @@ form {
     /* There must be 1em between the content and the border of this element */
     padding: 1em;
 
+
 }
 
 fieldset {
@@ -33,6 +34,7 @@ fieldset {
     /* Read how to center elements with margin here: http://learnlayout.com/margin-auto.html*/
     width: 80%;
     margin: 0 auto;
+    max-width: 400px;
 }
 
 .form-group {
@@ -57,10 +59,11 @@ fieldset {
     /* There must be a separation of 8px between the text and the border of this element */
     /* The text color of this element should be white and bold */
     /* The border of this element should be 1px, and its color should be light grey */
-    background-color: lightgray;
+    background-color: #0fb784;
     padding: 8px;
     color: white;
     font-weight: bold;
+    border: 1px, lightgray;
 }
 
 .form-control {
@@ -71,7 +74,7 @@ fieldset {
     /* See the example at: https://developer.mozilla.org/en-US/docs/Web/CSS/calc */
     /* HINT: Calculate based on the padding of the `.btn` class */
     /* HINT: Examples are available at: https://glitch.com/~input-button-width */
-    width: calc(100%);
+    width: calc(100% - 4px);
     padding-top: 4px;
     padding-bottom: 4px;
 
