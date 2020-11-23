@@ -10,6 +10,8 @@ h1, h2{
 body{
     background: antiquewhite;
     font-family: 'Dancing Script', cursive;
+    background-image: url(moroccan-flower/moroccan-flower.png);
+
 
 }
 ol{
@@ -27,7 +29,7 @@ td,tr{
     padding-left: 15px;
     padding-right: 15px;
     font-size: 12px;
-    background-color: cornsilk;
+    background-color: gainsboro;
 }
 
 a:link{
@@ -41,7 +43,10 @@ a:active{
 }
 
 img{
-    padding: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     height: 140px;
     width: 140px;
     border: 15px;
