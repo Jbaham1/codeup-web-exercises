@@ -56,8 +56,13 @@ div.single-box {
 #box-container-2 {
     /* TODO: Declare the display to be flex */
     width: 100%;
+    display: flex;
     /* TODO: Set up flex properties for this container */
+    flex-direction: column;
     margin-bottom: 30px;
+    justify-content: center;
+    justify-items: center;
+
 }
 #box-container-2 div.single-box {
     /* Going to override the height and the border-radius for these boxes */
@@ -68,9 +73,13 @@ div.single-box {
 /********************* CONTAINER 3 *******************/
 #box-container-3 {
     /* TODO: Declare the display to be flex */
+    display: flex;
     /* TODO: Set up flex properties for this container */
+    flex-direction: row;
+    flex-wrap: wrap;
     height: 400px;
     margin-bottom: 30px;
+    justify-content: space-evenly;
 }
 #box-container-3 div.single-box {
     height: auto;
