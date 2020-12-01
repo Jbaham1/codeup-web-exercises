@@ -1,0 +1,44 @@
+.form-inline {
+    float: left;
+}
+.jumbotron{
+    background-image: url("../img/pizza.png");
+    padding-left: 0;
+    padding-right: 0;
+}
+.jumbotron>.display-4 {
+    background-color: whitesmoke;
+    text-align: center;
+    opacity: 0.6;
+    width: 100%;
+}
+.card-sac-header{
+    padding: 10px;
+}
+.card-body{
+    background-color: white;
+    color: black;
+    padding-bottom: 10px;
+}
+.card2-body{
+    padding-top: 10px;
+}
+.nextButton{
+    color: white;
+    background-color: #037BFE;
+    padding: 5px;
+    float: right;
+}
+footer{
+    background-color: whitesmoke;
+    padding: 10px;
+}
+.card{
+    border: solid 1px lightgray;
+}
+.btn-group{
+    color: white;
+    background-color: #037BFE;
+    padding: 5px;
+    float: right;
+}
