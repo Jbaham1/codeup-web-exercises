@@ -1,0 +1,10 @@
+h3{
+    color: cornflowerblue;
+    font-weight: bold;
+}
+.row{
+    padding: 20px;
+    border-bottom: 5px solid #597330;
+    margin: 20px;
+}
+
