@@ -1,27 +1,3 @@
-// Page dropdown and buttons
-var zoomSelect = document.getElementById("zoom-select")
-zoomSelect.addEventListener("change", function (event) {
-    var zoomValue = zoomSelect.options[zoomSelect.selectedIndex].value;
-    map.setZoom(parseInt(zoomValue));
-})
-
-var styleSelect = document.getElementById("style-select")
-styleSelect.addEventListener("change", function (event) {
-    var styleValue = styleSelect.options[styleSelect.selectedIndex].value;
-    var styleString = "mapbox://styles/mapbox/" + styleValue;
-    map.setStyle(styleString);
-})
-
-var resetButton = document.getElementById("reset-button")
-resetButton.addEventListener("click", function (event) {
-    map.setZoom(10);
-    map.setCenter([-98.4916, 29.4252]);
-    map.setStyle('mapbox://styles/mapbox/streets-v9');
-    marker.setLngLat([-98.4916, 29.4252]);
-    popup.setText("Codeup");
-    //TODO: RESET the dropdown to initial option
-    //TODO: RESET style dropdown to initial option
-});
 
 /**********************************************
  * 			SETTING UP KEYS.JS
@@ -40,14 +16,9 @@ mapboxgl.accessToken = mapBoxToken; // from key.js file
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/navigation-preview-night-v4',
-    center: [-98.4916, 29.4252],
-    zoom: 9
+    center: [-73.98268832329461, 40.76898824734861],
+    zoom: 13
 });
-
-//TODO TOGETHER: Set map to san antonio area using the coordinates [-98.4916, 29.4252]
-
-
-//TODO: Experiment with different map styles, zoom levels, and centers. You will need to reference the mapbox docs. (~15 minutes)
 
 
 /**********************************************
@@ -62,7 +33,7 @@ var map = new mapboxgl.Map({
 var marker = new mapboxgl.Marker({
     color: '#ffcccc',
 })
-    .setLngLat([-98.4916, 29.4260])
+    .setLngLat([-73.98268832329461, 40.76898824734861])
     .addTo(map);
 // TODO TOGETHER: Change the color of the marker
 
@@ -77,13 +48,11 @@ var marker = new mapboxgl.Marker({
 // Popups are the info boxes that appear on a map and may describe a given location.
 // Popup docs --> https://docs.mapbox.com/mapbox-gl-js/api/#popup
 
-
-// TODO TOGETHER: Add a popup to the map over codeup. Set the html as a paragraph that says "Codeup Rocks!"
 var popup = new mapboxgl.Popup({
     className: 'codeup-popup'
 })
     .setLngLat([-98.48957136173456, 29.42686055035059])
-    .setHTML("<p>Codeup Rocks!</p>")
+    .setHTML("<p>Per Se</p>")
     .addTo(map);
 
 marker.setPopup(popup);
@@ -130,17 +99,3 @@ document.getElementById("search-button").addEventListener("click", function(){
         })
     })
 });
-
-// TODO TOGETHER: Using the Geocoder helper function, log the coordinates of Codeup and recenter the map to focus on Codeup. Comment out previous map code.
-
-
-
-//TODO: Using the geocode method above, add a popup above the marker at Codeup to the map
-
-//TODO: Instead of setCenter try using map.jumpTo()
-//TODO: Instead of setCenter try using map.flyTo()
-
-
-
-// TODO TOGETHER: Reverse Geocoding: Using the reverse geocoding method, enter the coordinates {lng: -98.4861, lat: 29.4260} to get a physical address for the alamo
-// TODO: Reverse geocode coordinates of your choice using the reverse geocode method
