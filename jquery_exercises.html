@@ -5,11 +5,20 @@
     <title>JQUERY</title>
 </head>
 <body>
+<div class="container">
+<h1 class="main-header" id="codeup">Codeup Journey</h1>
+<p class="objective" id="serious">We will be learning: </p>
+<ul class="goals" id="goals-list">
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+    <li id="codeup">jQuery</li>
+</ul>
+</div>
 <script src="js/jquery-2.2.4.js"></script>
 <script type="text/javascript">
-    $(document).ready(function() {
-        alert("DOM has finished loading")
-    });
+    "use strict"
+   $('#codeup').css('border', '1px solid red');
 </script>
 </body>
 </html>
