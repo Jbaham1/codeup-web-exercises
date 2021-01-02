@@ -3,7 +3,7 @@
 <head>
     <title>Konami Code</title>
 </head>
-<body style="background-color: darkred">
+<body  class =".stripe" style="background-color: lightgoldenrodyellow">
 <h1>Konami Code</h1>
 <p>You are low on lives! Please get a first aid kit (or enter code) to increase lives or perish!</p>
 <script src="js/jquery-2.2.4.js"></script>
@@ -32,18 +32,25 @@
                 konamiCodePosition = 0;
             }
         } else {
+            warningLight();
             konamiCodePosition = 0;
         }
     });
 
     function activateCheats() {
         $('*').css("background-color", "#98FB98")
-        $('*').css("color", "pink")
+        $('*').css("color", "deeppink")
         $('p').hide();
         // document.body.style.backgroundColor = "#98FB98";
         // document.body.style.color = "pink";
         alert("You have added 30 lives!")
     }
+    function warningLight(){
+        $('*').css("background-color", "darkred")
+        $('*').css("color", "black")
+        alert($(this).text() + "WRONG CODE!!!")
+    }
+
 </script>
 </body>
 </html>
