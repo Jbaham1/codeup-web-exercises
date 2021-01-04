@@ -107,7 +107,9 @@
             $("dd").toggleClass("invisible");
         });
         $("dt").click(function () {
-            $(this).toggleClass("highlighted");
+            $(this).toggleClass("highlighted").click(function (){
+                $("dd").toggleClass("invisible");
+            });
         });
     });
 </script>
