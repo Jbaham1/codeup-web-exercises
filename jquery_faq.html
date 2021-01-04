@@ -87,7 +87,7 @@
     </ol>
 </dl>
 
-<button href="#" id="btn">button</button>
+<button href="#" id="traverse">Go</button>
 
 <ul>
     <li>
@@ -146,12 +146,17 @@
                 $("dd").toggleClass("highlighted");
             });
         });
-        $("#btn").click(function () {
-            $('#btn').each(function () {
-                $('li').last().css('background-color', 'yellow');
+        $("#traverse").click(function () {
+            $('ul').each(function () {
+                $(this).children().last().addClass('highlighted');
             });
+        });
+        $("h3").click(function(){
+            $(this).next().children("li").css("font-weight", "bold");
+        });
+        $("li").click(function(){
+            $(this).parent().children().first().css('color', 'blue')
         })
-
     });
 </script>
 </body>
