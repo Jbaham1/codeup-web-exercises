@@ -89,39 +89,34 @@
 
 <button href="#" id="traverse">Go</button>
 
+<h3>Hot Springs</h3>
 <ul>
-    <li>
-        <h3>Hot Springs</h3>
-        <ul>
-            <li>Hot Springs National Park covers a total area of 5,550 acres</li>
-            <li>Hot Springs was made a national park on March 4, 1921</li>
-            <li>The lowest elevation found in Hot Springs is 415 feet at Bull Bayou</li>
-            <li>There is no entrance fee for Hot Springs National Park</li>
-        </ul>
-    </li>
+    <li>Hot Springs National Park covers a total area of 5,550 acres</li>
+    <li>Hot Springs was made a national park on March 4, 1921</li>
+    <li>The lowest elevation found in Hot Springs is 415 feet at Bull Bayou</li>
+    <li>There is no entrance fee for Hot Springs National Park</li>
+</ul>
 
-    <h3>Channel Islands</h3>
-    <ul>
-        <li>Painted Cave and the other sea caves on Santa Cruz Island were the inspiration for some of the sets
-            on Pirates of the Caribbean.
-        </li>
-        <li>“Peter Pan” (released in 1924) was filmed on Santa Cruz Island, portions at, well, Tinker’s Cove.
-        </li>
-        <li>The oldest human remains in North America, dating to 13,000 B.C., were discovered in 1959 on Santa
-            Rosa Island
-        </li>
-        <li>Diablo Peak (Devil’s Peak), on Santa Cruz Island, is the tallest peak on the Channel Islands at
-            2,450 feet.
-        </li>
-    </ul>
-    <h3>Redwood</h3>
-    <ul>
-        <li>Redwood National Park covers a total area of 131,983 acres</li>
-        <li>Redwood was made a national park on October 2, 1968</li>
-        <li>The lowest elevation found in Redwood is 0 feet at the Pacific Ocean</li>
-        <li>The highest elevation found in Redwood is 3,170 feet on Coyote Peak</li>
-    </ul>
+<h3>Channel Islands</h3>
+<ul>
+    <li>Painted Cave and the other sea caves on Santa Cruz Island were the inspiration for some of the sets
+        on Pirates of the Caribbean.
     </li>
+    <li>“Peter Pan” (released in 1924) was filmed on Santa Cruz Island, portions at, well, Tinker’s Cove.
+    </li>
+    <li>The oldest human remains in North America, dating to 13,000 B.C., were discovered in 1959 on Santa
+        Rosa Island
+    </li>
+    <li>Diablo Peak (Devil’s Peak), on Santa Cruz Island, is the tallest peak on the Channel Islands at
+        2,450 feet.
+    </li>
+</ul>
+<h3>Redwood</h3>
+<ul>
+    <li>Redwood National Park covers a total area of 131,983 acres</li>
+    <li>Redwood was made a national park on October 2, 1968</li>
+    <li>The lowest elevation found in Redwood is 0 feet at the Pacific Ocean</li>
+    <li>The highest elevation found in Redwood is 3,170 feet on Coyote Peak</li>
 </ul>
 
 <script src="js/jquery-2.2.4.js"></script>
@@ -147,14 +142,12 @@
             });
         });
         $("#traverse").click(function () {
-            $('ul').each(function () {
-                $(this).children().last().addClass('highlighted');
-            });
+            $(this).children().last().addClass('highlighted');
         });
-        $("h3").click(function(){
+        $("h3").click(function () {
             $(this).next().children("li").css("font-weight", "bold");
         });
-        $("li").click(function(){
+        $("li").click(function () {
             $(this).parent().children().first().css('color', 'blue')
         })
     });
