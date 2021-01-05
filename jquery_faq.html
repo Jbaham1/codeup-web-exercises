@@ -144,8 +144,10 @@
                 $("dd").toggleClass("highlighted");
             });
         });
-       $('button').click(function(){
-           $("li").last().css("background-color", "yellow");
+       $('#traverse').click(function(){
+           $("ul").each(function(){
+               $(this).children().last().addClass("highlighted")
+           });
        });
         $("h3").click(function () {
             $(this).next().children("li").css("font-weight", "bold");
