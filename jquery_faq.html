@@ -9,6 +9,9 @@
         .highlighted {
             background-color: darkgoldenrod;
         }
+        .blue{
+            color: cornflowerblue;
+        }
     </style>
 </head>
 <body>
@@ -150,10 +153,10 @@
            });
        });
         $("h3").click(function () {
-            $(this).next().children("li").css("font-weight", "bold");
+            $(this).next().children("li").addClass("bold");
         });
-        $("li").click(function () {
-            $(this).parent().children().first().css('color', 'blue')
+        $("ul").click(function () {
+            $(this).children("li").first().addClass("blue")
         })
     });
 </script>
