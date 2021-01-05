@@ -118,6 +118,9 @@
     <li>The lowest elevation found in Redwood is 0 feet at the Pacific Ocean</li>
     <li>The highest elevation found in Redwood is 3,170 feet on Coyote Peak</li>
 </ul>
+<div></div>
+<div></div>
+<div></div>
 
 <script src="js/jquery-2.2.4.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -141,9 +144,9 @@
                 $("dd").toggleClass("highlighted");
             });
         });
-        $("#traverse").click(function () {
-            $(this).children().last().addClass('highlighted');
-        });
+       $('button').click(function(){
+           $("li").last().css("background-color", "yellow");
+       });
         $("h3").click(function () {
             $(this).next().children("li").css("font-weight", "bold");
         });
