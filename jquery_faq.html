@@ -15,8 +15,10 @@
     </style>
 </head>
 <body>
+
 <div id="newsletter">
     <span id="closeButton">x</span> <h1>Would you like to sign up for our newsletter?</h1>
+    <h2 id="register">Please register for the site</h2>
 </div>
 <h2>National Parks FAQs</h2>
 <a href="#" id="toggle">toggle</a>
@@ -95,16 +97,16 @@
 
 <button href="#" id="traverse">Go</button>
 
-<h3>Hot Springs</h3>
-<ul>
+<h3 class="parkName">Hot Springs</h3>
+<ul class="facts">
     <li>Hot Springs National Park covers a total area of 5,550 acres</li>
     <li>Hot Springs was made a national park on March 4, 1921</li>
     <li>The lowest elevation found in Hot Springs is 415 feet at Bull Bayou</li>
     <li>There is no entrance fee for Hot Springs National Park</li>
 </ul>
 
-<h3>Channel Islands</h3>
-<ul>
+<h3 class="parkName">Channel Islands</h3>
+<ul class="facts">
     <li>Painted Cave and the other sea caves on Santa Cruz Island were the inspiration for some of the sets
         on Pirates of the Caribbean.
     </li>
@@ -117,16 +119,13 @@
         2,450 feet.
     </li>
 </ul>
-<h3>Redwood</h3>
-<ul>
+<h3 class="parkName">Redwood</h3>
+<ul class="facts">
     <li>Redwood National Park covers a total area of 131,983 acres</li>
     <li>Redwood was made a national park on October 2, 1968</li>
     <li>The lowest elevation found in Redwood is 0 feet at the Pacific Ocean</li>
     <li>The highest elevation found in Redwood is 3,170 feet on Coyote Peak</li>
 </ul>
-<div></div>
-<div></div>
-<div></div>
 
 <script src="js/jquery-2.2.4.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -163,7 +162,12 @@
         })
         $("#closeButton").click(function(){
             $("#newsletter").hide(1000)
-        })
+        });
+        $(".facts").hide();
+        $(".parkName").click(function(){
+            $(this).next().slideToggle(1000);
+        });
+        $("#register").hide().delay(500).show(5000);
     });
 </script>
 </body>
