@@ -32,5 +32,21 @@ var weatherObj = $(document).ready(function () {
         $("#humidity3").append("Humidity: " + data.list[15].main.humidity);
         $("#wind3").append("Wind: " + data.list[15].wind.speed + "mph")
         $("#pressure3").append("Pressure: " + data.list[15].main.pressure)
+
+        //card 4 info
+        $("#date4").append(data.list[23].dt_txt)
+        $("#temp4").append(data.list[23].main.temp)
+        $("#description4").append("Description: " + data.list[23].weather[0].description)
+        $("#humidity4").append("Humidity: " + data.list[23].main.humidity);
+        $("#wind4").append("Wind: " + data.list[23].wind.speed + "mph")
+        $("#pressure4").append("Pressure: " + data.list[23].main.pressure)
+
+        //card 5 info
+        $("#date5").append(data.list[31].dt_txt)
+        $("#temp5").append(data.list[15].main.temp)
+        $("#description5").append("Description: " + data.list[31].weather[0].description)
+        $("#humidity5").append("Humidity: " + data.list[31].main.humidity);
+        $("#wind5").append("Wind: " + data.list[31].wind.speed + "mph")
+        $("#pressure5").append("Pressure: " + data.list[31].main.pressure)
     });
 });
