@@ -1,17 +1,21 @@
-var weatherObj = $(document).ready(function () {
+$(document).ready(function () {
     //AJAX call to openWeather
     let weatherObj = $.get("http://api.openweathermap.org/data/2.5/forecast", {
         APPID: OPEN_WEATHER_APPID, //API key
         q: "San Antonio, US",
         units: "imperial"
     }).done(function (data) {
-        let iconImage = '<img src="http://openweathermap.org/img/wn/' + data.list[0].main.humidity + '@2x.png"/>';
+
         console.log(data)
+
+        let iconUrl = `http://openweathermap.org/img/wn${data.list[0].weather[0].icon}@2x.png`;
+        let iconImage = `<img src=${iconUrl} width="50 height="50>`
 
         $('#city').append(" " + data.city.name + " " + data.city.country)
         // card 1 info
         $("#date1").append(data.list[0].dt_txt)
-        $("#temp1").append(data.list[0].main.temp)
+        $("#temp1").append(data.list[0].main.temp + iconImage)
+
         $("#description1").append("Description: " + data.list[0].weather[0].description)
         $("#humidity1").append("Humidity: " + data.list[0].main.humidity);
         $("#wind1 ").append("Wind: " + data.list[0].wind.speed + "mph")
@@ -19,7 +23,7 @@ var weatherObj = $(document).ready(function () {
 
         //card 2 info
         $("#date2").append(data.list[7].dt_txt)
-        $("#temp2").append(data.list[7].main.temp)
+        $("#temp2").append(data.list[7].main.temp + iconImage)
         $("#description2").append("Description: " + data.list[7].weather[0].description)
         $("#humidity2").append("Humidity: " + data.list[7].main.humidity);
         $("#wind2").append("Wind: " + data.list[7].wind.speed + "mph")
@@ -27,7 +31,7 @@ var weatherObj = $(document).ready(function () {
 
         //card 3 info
         $("#date3").append(data.list[15].dt_txt)
-        $("#temp3").append(data.list[15].main.temp)
+        $("#temp3").append(data.list[15].main.temp + iconImage)
         $("#description3").append("Description: " + data.list[15].weather[0].description)
         $("#humidity3").append("Humidity: " + data.list[15].main.humidity);
         $("#wind3").append("Wind: " + data.list[15].wind.speed + "mph")
@@ -35,7 +39,7 @@ var weatherObj = $(document).ready(function () {
 
         //card 4 info
         $("#date4").append(data.list[23].dt_txt)
-        $("#temp4").append(data.list[23].main.temp)
+        $("#temp4").append(data.list[23].main.temp + iconImage)
         $("#description4").append("Description: " + data.list[23].weather[0].description)
         $("#humidity4").append("Humidity: " + data.list[23].main.humidity);
         $("#wind4").append("Wind: " + data.list[23].wind.speed + "mph")
@@ -43,10 +47,11 @@ var weatherObj = $(document).ready(function () {
 
         //card 5 info
         $("#date5").append(data.list[31].dt_txt)
-        $("#temp5").append(data.list[15].main.temp)
+        $("#temp5").append(data.list[15].main.temp + iconImage)
         $("#description5").append("Description: " + data.list[31].weather[0].description)
         $("#humidity5").append("Humidity: " + data.list[31].main.humidity);
         $("#wind5").append("Wind: " + data.list[31].wind.speed + "mph")
         $("#pressure5").append("Pressure: " + data.list[31].main.pressure)
     });
 });
+
