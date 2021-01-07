@@ -6,8 +6,7 @@ $(document).ready(function () {
         units: "imperial"
     }).done(function (data) {
         console.log(data);
-
-        let iconImage = '<img src="http://openweathermap.org/img/wn/' + data.weather[0].icon + '@2x.png"/>'
+        let iconImage = '<img src="http://openweathermap.org/img/wn/' + data.weather[0].icon + '@2x.png"/>';
         $("body").append(iconImage)
     });
 
