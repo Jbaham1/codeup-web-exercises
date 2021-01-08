@@ -32,6 +32,7 @@ var map = new mapboxgl.Map({
 // TODO TOGETHER: Add a marker to the map using the following coordinates [-98.4916, 29.4260]. This marker will mark the Alamo on our map.
 var marker = new mapboxgl.Marker({
     color: '#ffcccc',
+    draggable: true
 })
     .setLngLat([-98.4870, 29.4284])
     .addTo(map);
@@ -77,7 +78,7 @@ let searchString;
 
 // Add an event listener for the search-button 'button'
 document.getElementById("search-button").addEventListener("click", function(){
-    searchString = prompt("What would you like to search?");
+    searchString = userInput;
     geocode(searchString, mapBoxToken).then(function(result){
         console.log(result);
         // map.setCenter(result); // i.e. map.setCenter([-98.48, 29.426])
