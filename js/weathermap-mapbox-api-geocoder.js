@@ -16,8 +16,8 @@ mapboxgl.accessToken = mapBoxToken; // from key.js file
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/navigation-preview-night-v4',
-    center: [-73.98268832329461, 40.76898824734861],
-    zoom: 13
+    center: [-98.4870, 29.4284],
+    zoom: 11
 });
 
 
@@ -33,7 +33,7 @@ var map = new mapboxgl.Map({
 var marker = new mapboxgl.Marker({
     color: '#ffcccc',
 })
-    .setLngLat([-73.98268832329461, 40.76898824734861])
+    .setLngLat([-98.4870, 29.4284])
     .addTo(map);
 // TODO TOGETHER: Change the color of the marker
 
