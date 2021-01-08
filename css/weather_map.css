@@ -1,10 +1,11 @@
 body{
-    background-image: linear-gradient(120deg, #ffcccc, #ccffff);
-
+    background-color: #0cbaba;
+    background-image: linear-gradient(45deg, #0cbaba, #380036);
+    color: white;
 }
 
-button{
-    background-color: #0cbaba;
-    background-image: linear-gradient(315deg, #0cbaba 0%, #380036 74%);
+button {
+    background-color: #380036;
+    background-image: linear-gradient(45deg, #380036, #0cbaba);
     color: white;
 }
