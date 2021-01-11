@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- saved from url=(0059)https://java.codeup.com/examples/javascript/ajax-store.html -->
-<html>
+<html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Online Store</title>
@@ -20,39 +20,34 @@
     </thead>
     <tbody id="insertProducts"></tbody>
 </table>
-<form>
-    <input name="title" id="title" placeholder="title">
-    <input name="quantity" id="quantity" placeholder="quantity">
-    <input name="price" id="price" placeholder="price">
-    <input name="categories" id="categories" placeholder="categories">
-    <input type="submit" id="refresh" value="Refresh">
-</form>
-
+<button id="refresh">Refresh</button>
 <script src="./Online Store_files/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
         crossorigin="anonymous"></script>
-
 <script>
     (function () {
         "use strict";
         // TODO: Create an AJAX GET request for the file under data/inventory.json
-        $.get("data/inventory.json").done(function (data) {
-            data.forEach(function (product) {
-                let productHtml = "<tr>"
-                productHtml += "<td>" + product.title + "</td>";
-                productHtml += "<td>" + product.quantity + "</td>";
-                productHtml += "<td>" + product.price + "</td>";
-                productHtml += "<td>" + product.categories + "</td></tr>"
-                $("#insertProducts").append(productHtml);
-            })
-            $("#refresh").click(function () {
-
-            });
-        });
+        // $.ajax("data/inventory.json").done(function (data) {
+        //   console.log(data)
+        //
+        // });
         // TODO: Take the data from inventory.json and append it to the products table
         //       HINT: Your data should come back as a JSON object; use console.log() to inspect
         //             its contents and fields
         //       HINT: You will want to target #insertProducts for your new HTML elements
+        $.ajax("data/inventory.json").done(function (data) {
+            data.forEach(function (product) {
+                $("#refresh").click(function () {
+                    let productHtml = "<tr>"
+                    productHtml += "<td>" + product.title + "</td>";
+                    productHtml += "<td>" + product.quantity + "</td>";
+                    productHtml += "<td>" + product.price + "</td>";
+                    productHtml += "<td>" + product.categories + "</td></tr>"
+                    $("#insertProducts").append(productHtml);
+                });
+            })
 
+        })
     })();
 
 </script>
