@@ -5,8 +5,22 @@
     <title>Baham's Blog</title>
 </head>
 <body>
-<div id='post'></div>
+<div id="posts">
+
+</div>
 
 
 </body>
+<script src="./Online Store_files/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+<script>
+    (function () {
+        "use strict";
+
+        $.ajax("data/blog.json").done(function (data) {
+            console.log(data);
+        })
+
+    })();
+</script>
 </html>
