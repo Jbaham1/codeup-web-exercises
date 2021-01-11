@@ -18,7 +18,12 @@
         "use strict";
 
         $.ajax("data/blog.json").done(function (data) {
-            console.log(data);
+            let HTML = "";
+            data.forEach(function(post){
+                HTML = "<h4>" + post.title + "</h4>";
+                HTML += "<p>" + post.content + "</p>"
+                $("#posts").append(HTML);
+            })
         })
 
     })();
