@@ -3,8 +3,8 @@
 function getWeather() {
     $.get("http://api.openweathermap.org/data/2.5/onecall", {
         APPID: OPEN_WEATHER_APPID,
-        lat: 38.627809633783436,
-        lon: -90.18716564726147,
+        lat: 29.41956949745878,
+        lon: -98.48343218879837,
         units: "imperial"
     }).done(function (data) {
         console.log(data.daily);
@@ -24,6 +24,13 @@ function getWeather() {
             $(divId + " .pressure").html("<strong>Pressure:</strong>" + data.daily[i].pressure)
         }
     });
+    mapboxgl.accessToken = mapBoxToken; // from key.js file
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/navigation-preview-night-v4',
+    center: [-98.48343218879837, 29.41956949745878],
+    zoom: 10
+});
 }
-
+//,
 getWeather()

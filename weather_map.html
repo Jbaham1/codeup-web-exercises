@@ -12,98 +12,131 @@
     <link rel="stylesheet" href="css/weather_map.css">
 </head>
 <body>
-<div class="container">
-    <div class="row form-group form-inline" id="cityDiv">
-        <input type="text" name="city" id="city" class="form-control" placeholder="Enter city name">
-        <button id="submitCity" class="btn btn-primary">Search</button>
+<div class="container-fluid">
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input type="text" name="city" id="city" class="form-control" placeholder="Enter city name">
+                    <button class="btn btn-outline-success my-2 my-sm-0" id="submitCity" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
     </div>
     <div id="showWeather"></div>
     <div id="error"></div>
+    <div class="container">
+        <div class="row d-flex justify-content-between">
+            <div class="card col col-2" id="day1">
+                <div class="card-header date">
+                    ...
+                </div>
+                <ul class="list-group list-group-flush">
 
-    <div class="row d-flex justify-content-around">
-        <div class="card col col-2" id="day1" style="width: 18rem;">
-            <div class="card-header date">
-                ...
+                    <li class="list-group-item temperature"><span class="">...</span><sup>°F</sup><br>
+                        <div class="image"></div>
+                    </li>
+                    <li class="list-group-item description"></li>
+                    <li class="list-group-item wind"></li>
+                    <li class="list-group-item pressure"></li>
+                </ul>
             </div>
-            <ul class="list-group list-group-flush">
+            <div class="card col col-2" id="day2">
+                <div class="card-header date">
+                    ...
+                </div>
+                <ul class="list-group list-group-flush">
 
-                <li class="list-group-item temperature" ><span class="">...</span><sup>°F</sup><br>
-                    <div class="image"></div>
-                </li>
-                <li class="list-group-item description"></li>
-                <li class="list-group-item wind" ></li>
-                <li class="list-group-item pressure"></li>
-            </ul>
-        </div>
-        <div class="card col col-2" id="day2" style="width: 18rem;">
-            <div class="card-header date">
-                ...
+                    <li class="list-group-item temperature"><span class="">...</span><sup>°F</sup><br>
+                        <div class="image"><img alt="tempIcon"></div>
+                    </li>
+                    <li class="list-group-item description"></li>
+                    <li class="list-group-item wind"></li>
+                    <li class="list-group-item pressure"></li>
+                </ul>
             </div>
-            <ul class="list-group list-group-flush">
+            <div class="card col col-2" id="day3">
+                <div class="card-header date">
+                    ...
+                </div>
+                <ul class="list-group list-group-flush">
 
-                <li class="list-group-item temperature"><span class="">...</span><sup>°F</sup><br>
-                    <div class="image"><img alt="tempIcon"></div>
-                </li>
-                <li class="list-group-item description"></li>
-                <li class="list-group-item wind" ></li>
-                <li class="list-group-item pressure"></li>
-            </ul>
-        </div>
-        <div class="card col col-2" id="day3" style="width: 18rem;">
-            <div class="card-header date">
-                ...
+                    <li class="list-group-item temperature"><span class="">...</span><sup>°F</sup><br>
+                        <div class="image"><img alt="tempIcon"></div>
+                    </li>
+                    <li class="list-group-item description"></li>
+                    <li class="list-group-item wind"></li>
+                    <li class="list-group-item pressure"></li>
+                </ul>
             </div>
-            <ul class="list-group list-group-flush">
+            <div class="card col col-2" id="day4">
+                <div class="card-header date">
+                    ...
+                </div>
+                <ul class="list-group list-group-flush">
 
-                <li class="list-group-item temperature"><span class="">...</span><sup>°F</sup><br>
-                    <div class="image"><img alt="tempIcon"></div>
-                </li>
-                <li class="list-group-item description"></li>
-                <li class="list-group-item wind" ></li>
-                <li class="list-group-item pressure"></li>
-            </ul>
-        </div>
-        <div class="card col col-2" id="day4" style="width: 18rem;">
-            <div class="card-header date">
-                ...
+                    <li class="list-group-item temperature"><span class="">...</span><sup>°F</sup><br>
+                        <div class="image"><img alt="tempIcon"></div>
+                    </li>
+                    <li class="list-group-item description"></li>
+                    <li class="list-group-item wind"></li>
+                    <li class="list-group-item pressure"></li>
+                </ul>
             </div>
-            <ul class="list-group list-group-flush">
+            <div class="card col col-2" id="day5">
+                <div class="card-header date">
+                    ...
+                </div>
+                <ul class="list-group list-group-flush">
 
-                <li class="list-group-item temperature"><span class="">...</span><sup>°F</sup><br>
-                    <div class="image"><img alt="tempIcon"></div>
-                </li>
-                <li class="list-group-item description"></li>
-                <li class="list-group-item wind" ></li>
-                <li class="list-group-item pressure"></li>
-            </ul>
-        </div>
-        <div class="card col col-2" id="day5" style="width: 18rem;">
-            <div class="card-header date">
-                ...
+                    <li class="list-group-item temperature"><span class="">...</span><sup>°F</sup><br>
+                        <div class="image"><img alt="tempIcon"></div>
+                    </li>
+                    <li class="list-group-item description"></li>
+                    <li class="list-group-item wind"></li>
+                    <li class="list-group-item pressure"></li>
+                </ul>
             </div>
-            <ul class="list-group list-group-flush">
-
-                <li class="list-group-item temperature"><span class="">...</span><sup>°F</sup><br>
-                    <div class="image"><img alt="tempIcon"></div>
-                </li>
-                <li class="list-group-item description"></li>
-                <li class="list-group-item wind" ></li>
-                <li class="list-group-item pressure"></li>
-            </ul>
         </div>
     </div>
-
-    <div id='map' style="width: 100%; height: 300px"></div>
+    <div class="d-flex justify-content-center" id='map' style="width: 75%; height: 600px"></div>
 
 </div>
-<footer class="page-footer">
-    <div class="container">
+<div>
+    <footer class="page-footer">
         <small>Made by Jeremiah Baham
         </small>
-    </div>
-
-</footer>
-
+    </footer>
+</div>
 
 <script src="js/jquery-2.2.4.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
