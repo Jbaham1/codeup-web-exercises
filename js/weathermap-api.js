@@ -8,6 +8,8 @@ function getWeather() {
         units: "imperial"
     }).done(function (data) {
         console.log(data.daily);
+        $('#autocomplete').autocomplete().disable();
+        $('#autocomplete').autocomplete().setOptions(options);
         for (var i = 0; i < 5; i++) {
             //create string for div id
             var divId = "#day" + (i + 1)
