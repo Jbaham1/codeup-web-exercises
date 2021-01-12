@@ -98,6 +98,5 @@ users.forEach((user) => {
             list += `<li>${developer}</li>`;
         }
         list += '</ul>';
-        console.log(list);
-
+        // console.log(list);
 });
