@@ -153,7 +153,7 @@ $(document).ready(function () {
     //  3. Use ES6
 let totalValueEs6 = mbpModels.reduce((total, mbp) => total + mbp.price, 0)
 
-    "Total Value Es6 reduce: " + totalValueEs6;
+    console.log("Total Value Es6: " + totalValueEs6);;
     /**************************** LEAVE IN FOR STUDENTS **(********************************/
     /*********************** function to get commas in number *****************************/
     function commaThousands(number) {
