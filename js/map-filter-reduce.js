@@ -37,6 +37,7 @@ const users = [
 ];
 
 //Problem 1
+//Use .filter to create an array of user objects where each user object has at least 3 languages in the languages array.
 let threePlus = [];
 for (var i = 0; i < users.length; i ++){
     if(users[i].languages.length >= 3){
@@ -45,3 +46,12 @@ for (var i = 0; i < users.length; i ++){
 }
 console.log("Users with knowledge of more than three languages: ");
 console.log(threePlus);
+
+//Problem 2
+//Use .map to create an array of strings where each element is a user's email address
+let contact = [];
+for(var i = 0; i < users.length; i++){
+     contact.push(users[i].email)
+}
+console.log("Available contact information: ");
+console.log(contact);
