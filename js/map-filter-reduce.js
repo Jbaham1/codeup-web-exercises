@@ -35,3 +35,13 @@ const users = [
         yearsOfExperience: 9
     }
 ];
+
+//Problem 1
+let threePlus = [];
+for (var i = 0; i < users.length; i ++){
+    if(users[i].languages.length >= 3){
+        threePlus.push(users[i])
+    }
+}
+console.log("Users with knowledge of more than three languages: ");
+console.log(threePlus);
