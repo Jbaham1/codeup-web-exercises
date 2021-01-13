@@ -55,3 +55,26 @@ for(var i = 0; i < users.length; i++){
 }
 console.log("Available contact information: ");
 console.log(contact);
+
+//Problem 3
+//Use .reduce to get the total years of experience from the list of users. Once you get the
+let experience = [];
+    users.reduce((year, user) => {
+    return experience.push(user.name +": " + user.yearsOfExperience + " years.")
+}, 0);
+
+console.log("Years of experience: ");
+console.log(experience);
+
+//Problem 4
+//Use .reduce to get the total years of experience from the list of users. Once you get the total of years you can use the result to calculate the average.
+    //sum
+const totalExperience = users.reduce((total, person) => {
+    return total + person.yearsOfExperience;
+}, 0);
+console.log(`The total amount of experience is ${totalExperience} years` );
+    //average
+const averageExperience = users.reduce((total, person) => {
+    return (total + person.yearsOfExperience) / users.length;
+}, 0);
+console.log(`The average amount of experience is ${averageExperience} years` );
