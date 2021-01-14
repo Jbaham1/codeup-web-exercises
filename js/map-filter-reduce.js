@@ -81,7 +81,7 @@ const instructors = users.reduce((names, user) => {
     if (names !== '') {
         names += ', ';
     }
-    return names + user.name;
+    return names + user.name.charAt(0).toUpperCase() + user.name.slice(1);
 }, '');
 
-console.log(instructors);
+console.log(`Your instructors are: ${instructors}.`);
