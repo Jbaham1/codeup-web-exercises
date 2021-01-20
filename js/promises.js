@@ -1,33 +1,35 @@
-const url = 'https://api.github.com/users'
-const events = '/events'
+// function getUsernames() {
+//     return fetch('https://api.github.com/users')
+//         .then(response => response.json())
+// }
+// getUsernames().then( users => {
+//     users.forEach( userObj => {
+//         // do something with each username
+//         console.log(userObj);
+//         console.log(userObj.login);
+//     });
+// }).catch(error => console.error(error));
 
-// url + username + events
-const getLastCommitDate = (username) => {
-    let token = `token ${GITHUB_API_TOKEN}`
-    return fetch(url + username + events, {headers: {'Authorization': token}})
-        .then(response => response.json())
-        .then(data => {
+function getActivity(username) {
+    return fetch('https://api.github.com/users/' + username + '/events/public', {headers: {'Authorization': 'token ' + GITHUB_API_TOKEN}})
+        .then(data => data.json()).then(data => {
             console.log(data)
-            return data.filter(event => event.type === "PushEvent")
-        })
-        .then(pushEvents => {
-            console.log(pushEvents[0].created_at);
-            return pushEvents[0].created_at;
-        })
+            return data.filter(event=>event.type === "PushEvent")
+        }).then(pushEvents => {
+                console.log(pushEvents[0].created_at)
+                return pushEvents[0].created_at
+            }
 
+        ).catch(error => console.error(error))
 }
-// console.log(getLastCommitDate("ronaldraiski"))
-// console.log(getLastCommitDate("danielfryar"));
-// console.log(getLastCommitDate("fridaynext"));
-// console.log(getLastCommitDate("kennethhowell"));
 
+console.log(getActivity("jbaham1"))
 
-const wait = (ms) => {
-    return new Promise((resolve, reject) => {
-        setTimeout(resolve, ms);
-        reject();
-    })
-}
-wait(1000).then(() => console.log('You\'ll see this after 1 second'));
-wait(3000).then(() => console.log('You\'ll see this after 3 seconds'));
-wait(5000).catch(() => console.log("When will we see this?"))
+function getUsernameLastCommit(username) {
+data = getActivity(username)
+    console.log(data)
+            for (let i = 0; i < data.length; i++) {
+                if (data[i].type == "PushEvent") {output = data[i].created_at;}
+            }
+            return output
+        }
