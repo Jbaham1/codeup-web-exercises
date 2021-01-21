@@ -1,47 +1,235 @@
-"use strict";
-$(document).ready(function () {
-    $("#submitCity").click(function () {
-        return getWeather();
-    })
+mapboxgl.accessToken = mapBoxToken;
+$(".hiddenForm").hide()
 
-    function getWeather() {
-
-        $.get("http://api.openweathermap.org/data/2.5/onecall", {
-            APPID: OPEN_WEATHER_APPID,
-            lat: 29.41956949745878,
-            lon: -98.48343218879837,
-            units: "imperial"
-        }).done(function (data) {
-            console.log(data.daily);
-
-            for (var i = 0; i < 5; i++) {
-                //create string for div id
-                var divId = "#day" + (i + 1)
-                var utcSeconds = data.daily[i].dt;
-                var d = new Date(0); // The 0 there is the key, which sets the date to the epoch
-                d.setUTCSeconds(utcSeconds);
-                // var imageIcon = "<img src'http://openweathermap.org/img/wn/' + data.daily[i].weather[0].icon + '@2x.png'>"
-
-                $(divId + " .date").html(d.getMonth() + 1 + "-" + d.getDate() + "-" + d.getFullYear())
-                $(divId + " .temperature span").html(data.daily[i].temp.min + " / " + data.daily[i].temp.max)
-                // $(divId + " .image div").html(imageIcon)
-                $(divId + " .description").html("<strong>Description: </strong>" + data.daily[i].weather[0].description)
-                $(divId + " .wind").html("<strong>Wind: </strong>" + data.daily[i].wind_speed.toFixed() + "MPH")
-                $(divId + " .pressure").html("<strong>Pressure:</strong>" + data.daily[i].pressure)
-            }
+function geocode(search, token) {
+    var startPoint = 'https://api.mapbox.com';
+    var endPoint = '/geocoding/v5/mapbox.places/';
+    return fetch(startPoint + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
+        .then(function (res) {
+            return res.json();
+            // to get all the data from the request, comment out the following three lines...
+        }).then(function (data) {
+            return data.features[0].center;
         });
-        mapboxgl.accessToken = mapBoxToken; // from key.js file
-        var map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mapbox/navigation-preview-night-v4',
-            center: [-98.48343218879837, 29.41956949745878],
-            zoom: 10
-        });
+}
 
+var result = [-98.48949046931321, 29.427551958140327]
+let latitude = result[0]
+let longitude = result[1]
+$.get("http://api.openweathermap.org/data/2.5/forecast", {
+    APPID: OPEN_WEATHER_APPID,
+    lat: longitude,
+    lon: latitude,
+    units: "imperial"
+}).done(function (data) {
+    console.log(data)
+    var weatherObj = {}
+    for (var i = 0, j = 0; i < 40; i = i + 8, j++) {
+        weatherObj[j] = {}
+        weatherObj[j].tempMin = data.list[i].main.temp_min
+        weatherObj[j].tempMax = data.list[i].main.temp_max
+        weatherObj[j].description = data.list[i].weather[0].description
+        weatherObj[j].wind = data.list[i].wind.speed
+        weatherObj[j].pressure = data.list[i].main.pressure
+        weatherObj[j].humidity = data.list[i].main.humidity
+        weatherObj[j].date = data.list[i].dt_txt
+        weatherObj[j].icon = data.list[i].weather[0].icon
+    }
+    console.log(weatherObj)
+    var cards = $(".card-deck").children()
+    for (var i = 0; i < cards.length; i++) {
+        let card = cards[i];
+        card.innerHTML = '<div class="card-header">' + weatherObj[i].date.split(" ")[0] + '</div>' +
+            "<ul class=\"list-group list-group-flush\">\n" +
+            "            <li class=\"list-group-item\">" + weatherObj[i].tempMin + "°F / " + weatherObj[i].tempMax + "°F" + "<br>" +
+            "<img src='http://openweathermap.org/img/wn/" + weatherObj[i].icon + "@2x.png' width='50px' height='50px'>" + "</li>" +
+            "            <li class=\"list-group-item\"> Description: " + weatherObj[i].description + "<br><br>Humdity: " + weatherObj[i].humidity + "</li>\n" +
+            "            <li class=\"list-group-item\">Wind: " + weatherObj[i].wind + "</li>\n" +
+            "            <li class=\"list-group-item\">Pressure: " + weatherObj[i].pressure + "</li>\n" +
+            "        </ul>"
     }
 
-    getWeather()
 
+});
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/dark-v10',
+    center: [latitude, longitude],
+    zoom: 13,
+    dragRotate: true
+})
+var marker = new mapboxgl.Marker({
+    draggable: true
+})
+    .setLngLat(result)
+    .addTo(map);
+
+
+function onDragEnd() {
+
+    var lngLat = marker.getLngLat();
+    let latitude = lngLat.lat;
+    let longitude = lngLat.lng
+    map.setCenter([longitude, latitude])
+    $.get("http://api.openweathermap.org/data/2.5/forecast", {
+        APPID: OPEN_WEATHER_APPID,
+        lat: latitude,
+        lon: longitude,
+        units: "imperial"
+    }).done(function (data) {
+        var weatherObj = {}
+        for (var i = 0, j = 0; i < 40; i = i + 8, j++) {
+            weatherObj[j] = {}
+            weatherObj[j].tempMin = data.list[i].main.temp_min
+            weatherObj[j].tempMax = data.list[i].main.temp_max
+            weatherObj[j].description = data.list[i].weather[0].description
+            weatherObj[j].wind = data.list[i].wind.speed
+            weatherObj[j].pressure = data.list[i].main.pressure
+            weatherObj[j].humidity = data.list[i].main.humidity
+            weatherObj[j].date = data.list[i].dt_txt
+            weatherObj[j].icon = data.list[i].weather[0].icon
+        }
+        var cards = $(".card-deck").children()
+        for (var i = 0; i < cards.length; i++) {
+            let card = cards[i];
+            console.log(weatherObj[i].icon)
+            card.innerHTML = '<div class="card-header">' + weatherObj[i].date.split(" ")[0] + '</div>' +
+                "<ul class=\"list-group list-group-flush\">\n" +
+                "            <li class=\"list-group-item\">" + weatherObj[i].tempMin + "°F / " + weatherObj[i].tempMax + "°F" + "<br>" +
+                "<img src='http://openweathermap.org/img/wn/" + weatherObj[i].icon + "@2x.png' width='50px' height='50px'>" + "</li>" +
+                "            <li class=\"list-group-item\"> Description: " + weatherObj[i].description + "<br><br>Humdity: " + weatherObj[i].humidity + "</li>\n" +
+                "            <li class=\"list-group-item\">Wind: " + weatherObj[i].wind + "</li>\n" +
+                "            <li class=\"list-group-item\">Pressure: " + weatherObj[i].pressure + "</li>\n" +
+                "        </ul>"
+        }
+
+
+    })
+    reverseGeocode({lng: longitude, lat: latitude}, mapBoxToken).then(function (results) {
+
+        $("#current").html("Current Location: " + results)
+    });
+}
+
+marker.on('dragend', onDragEnd);
+
+
+reverseGeocode({lng: latitude, lat: longitude}, mapBoxToken).then(function (results) {
+
+    $("#current").html("Current Location: " + results)
+});
+
+$(".btn").click(function (event) {
+    event.preventDefault()
+    $(".hiddenForm").hide()
+    let address = $("#address").val();
+    geocode(address, mapBoxToken).then(function (result) {
+        let latitude = result[0]
+        let longitude = result[1]
+        reverseGeocode({lng: latitude, lat: longitude}, mapBoxToken).then(function (results) {
+
+            $("#current").html("Current Location: " + results)
+        });
+        $.get("http://api.openweathermap.org/data/2.5/forecast", {
+            APPID: OPEN_WEATHER_APPID,
+            lat: longitude,
+            lon: latitude,
+            units: "imperial"
+        }).done(function (data) {
+            var weatherObj = {}
+            for (var i = 0, j = 0; i < 40; i = i + 8, j++) {
+                weatherObj[j] = {}
+                weatherObj[j].tempMin = data.list[i].main.temp_min
+                weatherObj[j].tempMax = data.list[i].main.temp_max
+                weatherObj[j].description = data.list[i].weather[0].description
+                weatherObj[j].wind = data.list[i].wind.speed
+                weatherObj[j].pressure = data.list[i].main.pressure
+                weatherObj[j].humidity = data.list[i].main.humidity
+                weatherObj[j].date = data.list[i].dt_txt
+                weatherObj[j].icon = data.list[i].weather[0].icon
+            }
+            var cards = $(".card-deck").children()
+            for (var i = 0; i < cards.length; i++) {
+                let card = cards[i];
+                card.innerHTML = '<div class="card-header">' + weatherObj[i].date.split(" ")[0] + '</div>' +
+                    "<ul class=\"list-group list-group-flush\">\n" +
+                    "            <li class=\"list-group-item\">" + weatherObj[i].tempMin + "°F / " + weatherObj[i].tempMax + "°F" + "<br>" +
+                    "<img src='http://openweathermap.org/img/wn/" + weatherObj[i].icon + "@2x.png' width='50px' height='50px'>" + "</li>" +
+                    "            <li class=\"list-group-item\"> Description: " + weatherObj[i].description + "<br><br>Humdity: " + weatherObj[i].humidity + "</li>\n" +
+                    "            <li class=\"list-group-item\">Wind: " + weatherObj[i].wind + "</li>\n" +
+                    "            <li class=\"list-group-item\">Pressure: " + weatherObj[i].pressure + "</li>\n" +
+                    "        </ul>"
+            }
+        });
+        map.setCenter(result)
+        marker.setLngLat(result)
+
+    })
 
 })
-//,
+$(".btn2").click(function (event) {
+    event.preventDefault()
+    $("#address").val($("#suggested").val())
+    $(".hiddenForm").hide()
+    let address = $("#address").val();
+    geocode(address, mapBoxToken).then(function (result) {
+        let latitude = result[0]
+        let longitude = result[1]
+        reverseGeocode({lng: latitude, lat: longitude}, mapBoxToken).then(function (results) {
+
+            $("#current").html("Current Location: " + results)
+        });
+
+        $.get("http://api.openweathermap.org/data/2.5/forecast", {
+            APPID: OPEN_WEATHER_APPID,
+            lat: longitude,
+            lon: latitude,
+            units: "imperial"
+        }).done(function (data) {
+            var weatherObj = {}
+            for (var i = 0, j = 0; i < 40; i = i + 8, j++) {
+                weatherObj[j] = {}
+                weatherObj[j].tempMin = data.list[i].main.temp_min
+                weatherObj[j].tempMax = data.list[i].main.temp_max
+                weatherObj[j].description = data.list[i].weather[0].description
+                weatherObj[j].wind = data.list[i].wind.speed
+                weatherObj[j].pressure = data.list[i].main.pressure
+                weatherObj[j].humidity = data.list[i].main.humidity
+                weatherObj[j].date = data.list[i].dt_txt
+                weatherObj[j].icon = data.list[i].weather[0].icon
+            }
+            var cards = $(".card-deck").children()
+            for (var i = 0; i < cards.length; i++) {
+                let card = cards[i];
+                card.innerHTML = '<div class="card-header">' + weatherObj[i].date.split(" ")[0] + '</div>' +
+                    "<ul class=\"list-group list-group-flush\">\n" +
+                    "            <li class=\"list-group-item\">" + weatherObj[i].tempMin + "°F / " + weatherObj[i].tempMax + "°F" + "<br>" +
+                    "<img src='http://openweathermap.org/img/wn/" + weatherObj[i].icon + "@2x.png' width='50px' height='50px'>" + "</li>" +
+                    "            <li class=\"list-group-item\"> Description: " + weatherObj[i].description + "<br><br>Humdity: " + weatherObj[i].humidity + "</li>\n" +
+                    "            <li class=\"list-group-item\">Wind: " + weatherObj[i].wind + "</li>\n" +
+                    "            <li class=\"list-group-item\">Pressure: " + weatherObj[i].pressure + "</li>\n" +
+                    "        </ul>"
+            }
+        });
+        map.setCenter(result)
+        marker.setLngLat(result)
+
+    })
+})
+
+$("#address").keypress(function (event) {
+    let address = $("#address").val();
+    if (address.length > 4) {
+        geocode(address, mapBoxToken).then(function (result) {
+            var longitude = result[0];
+            var latitude = result[1]
+            reverseGeocode({lng: longitude, lat: latitude}, mapBoxToken).then(function (results) {
+                // logs the address for The Alamo
+                console.log(results);
+                $("#suggested").val(results)
+                $(".hiddenForm").show()
+            });
+        })
+    }
+
+})
