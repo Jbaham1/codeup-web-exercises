@@ -22,7 +22,6 @@ $.get("http://api.openweathermap.org/data/2.5/forecast", {
     lon: latitude,
     units: "imperial"
 }).done(function (data) {
-    console.log(data)
     var weatherObj = {}
     for (var i = 0, j = 0; i < 40; i = i + 8, j++) {
         weatherObj[j] = {}
@@ -35,7 +34,6 @@ $.get("http://api.openweathermap.org/data/2.5/forecast", {
         weatherObj[j].date = data.list[i].dt_txt
         weatherObj[j].icon = data.list[i].weather[0].icon
     }
-    console.log(weatherObj)
     var cards = $(".card-deck").children()
     for (var i = 0; i < cards.length; i++) {
         let card = cards[i];
@@ -92,7 +90,6 @@ function onDragEnd() {
         var cards = $(".card-deck").children()
         for (var i = 0; i < cards.length; i++) {
             let card = cards[i];
-            console.log(weatherObj[i].icon)
             card.innerHTML = '<div class="card-header">' + weatherObj[i].date.split(" ")[0] + '</div>' +
                 "<ul class=\"list-group list-group-flush\">\n" +
                 "            <li class=\"list-group-item\">" + weatherObj[i].tempMin + "°F / " + weatherObj[i].tempMax + "°F" + "<br>" +
@@ -224,8 +221,6 @@ $("#address").keypress(function (event) {
             var longitude = result[0];
             var latitude = result[1]
             reverseGeocode({lng: longitude, lat: latitude}, mapBoxToken).then(function (results) {
-                // logs the address for The Alamo
-                console.log(results);
                 $("#suggested").val(results)
                 $(".hiddenForm").show()
             });
